@@ -24,7 +24,7 @@ class UpdateSuscriptionRequest extends FormRequest
     public function rules()
     {
         return [
-            //'email' => 'email:rfc,dns|string|max:255|unique:suscriptions,email,'.$this->route('suscriptions')->id,
+            'email' => 'email:rfc,dns|string|max:255|unique:suscriptions,email,'.$this->route('suscription')->id,
             'state_id' => 'required|integer|exists:App\Models\State,id'
         ];
     }
