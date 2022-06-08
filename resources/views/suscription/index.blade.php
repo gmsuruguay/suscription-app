@@ -40,6 +40,10 @@
 
                                         <th>Estado</th>
 
+                                        <th>Fecha de creación</th>
+
+                                        <th>Fecha de actualización</th>
+
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -51,6 +55,10 @@
 											<td>{{ $suscription->email }}</td>
 
                                             <td>{{ $suscription->state->name }}</td>
+
+                                            <td>{{ $suscription->created_at }}</td>
+
+                                            <td>{{ $suscription->updated_at }}</td>                                           
 
                                             <td>
                                                 <form action="{{ route('suscriptions.destroy',$suscription->id) }}" method="POST">
