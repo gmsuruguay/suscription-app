@@ -30,7 +30,14 @@ class Suscription extends Model
         return Carbon::parse($value)->format('d-m-Y H:i:s');
     }
 
-    // Query Scope    
+    /**
+     * Filter by email.
+     * 
+     * @param  string  $email
+     * @param   $query
+     * @return query
+     */
+
     public function scopeFilterByEmail($query, $email)
     {
         if ($email) {
@@ -38,7 +45,13 @@ class Suscription extends Model
         }
     }
     
-    // Query Scope    
+    /**
+     * Filter by state.
+     * @param  int  $state_id
+     * @param   $query
+     * @return query
+     */
+
     public function scopeFilterByState($query, $state_id)
     {
         if ($state_id) {
