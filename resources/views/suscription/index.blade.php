@@ -11,6 +11,29 @@
                 <p>{{ $message }}</p>
             </div>
         @endif
+        <form method="GET" action="{{ route('suscriptions.index') }}">   
+        
+            <div class="row">
+                <div class="col-md-6 mb-3"> 
+                    <select class="form-control" name="state_id" >
+                        <option value="">Selecciona el estado</option>
+                        @foreach ($states as $key => $value)
+                            <option value="{{ $value->id }}" {{  $value->id == old('state_id',$state_id)  ? 'selected' : '' }}> 
+                                {{ $value->name }} 
+                            </option>
+                        @endforeach  
+                    </select>    
+                </div>
+                <div class="col-md-6 mb-3"> 
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="email" value="{{old('email', $email)}}" placeholder="Buscar por email" aria-describedby="button-addon2">
+                        <div class="input-group-append">                     
+                        <button class="btn btn-primary" type="submit" id="button-addon2"><i class="fas fa-search"></i> Buscar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">

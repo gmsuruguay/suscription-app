@@ -12,15 +12,24 @@ class SuscriptionController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $suscriptions = Suscription::where('deleted',0)->paginate();
+        $email = $request->get('email');
 
-        return view('suscription.index', compact('suscriptions'))
-            ->with('i', (request()->input('page', 1) - 1) * $suscriptions->perPage());
+        $state_id = $request->get('state_id');
+
+        $states = State::get();
+
+        $suscriptions = Suscription::orderBy('id','desc')
+                        ->where('deleted',Suscription::ACTIVE)
+                        ->filterByEmail($email)
+                        ->filterByState($state_id)
+                        ->paginate(5);
+
+        return view('suscription.index', compact('suscriptions','email','states','state_id'));
     }
 
     /**
