@@ -1,6 +1,6 @@
-<div class="form-group">
-    <label>Estado</label>
-    <select class="form-control @error('state_id') is-invalid @enderror" name="state_id" >
+<div class="mb-3">
+    <label class="form-label">Estado</label>
+    <select class="form-control  @error('state_id') is-invalid @enderror" name="state_id" >
         <option value="">Selecciona el estado</option>
         @foreach ($states as $key => $value)
             <option value="{{ $value->id }}" {{  $value->id == old('state_id',$suscription->state_id)  ? 'selected' : '' }}> 
@@ -16,8 +16,8 @@
 </div>  
 
 
-<div class="form-group">
-    <label>Email</label>
+<div class="mb-3">
+    <label class="form-label">Email</label>
     <input type="text" name="email" class="form-control  @error('email') is-invalid @enderror" value="{{ old('email',$suscription->email) }}">
     @error('email')
         <span class="invalid-feedback" role="alert">
