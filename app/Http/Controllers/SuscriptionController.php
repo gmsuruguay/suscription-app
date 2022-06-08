@@ -79,7 +79,7 @@ class SuscriptionController extends Controller
     public function update(UpdateSuscriptionRequest $request, Suscription $suscription)
     {
         $suscription->update($request->all());
-        return redirect()->route('suscriptions.index');
+        return redirect()->route('suscriptions.index')->with('success', 'Registro actualizado.');
     }
 
     /**
